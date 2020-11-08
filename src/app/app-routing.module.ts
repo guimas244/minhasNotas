@@ -11,6 +11,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'disciplina',
+    loadChildren: () => import('./pages/disciplina/disciplina.module').then( m => m.DisciplinaPageModule)
+  },
 ];
 
 @NgModule({
