@@ -8,4 +8,5 @@ export class DisciplinaService {
   private PATH = 'disciplinas/';
 
   constructor(private db: AngularFireDatabase) { }
+  
 }
