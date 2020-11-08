@@ -33,7 +33,7 @@ export class DisciplinaPage {
       key: [this.disciplina.key],
       nome: [this.disciplina.nome, Validators.required],
       ano: [this.disciplina.ano, Validators.required],
-      observacao: [this.disciplina.observacao, Validators.required],
+      observacao: [this.disciplina.observacao],
     });
   }
   onSubmit() {
@@ -41,11 +41,12 @@ export class DisciplinaPage {
     if (this.formulario.valid) {
       this.service.save(this.formulario.value)
         .then(() => {
-          this.mensagemControler.create({ message: 'Contato salvo com sucesso.', duration: 3000 }).finally();
+          this.mensagemControler.create({ message: 'Disciplina salvo com sucesso.', duration: 3000 }).finally();
           this.navControlador.pop();
+          this.createForm();
         })
         .catch((e) => {
-          this.mensagemControler.create({ message: 'Erro ao salvar o contato.', duration: 3000 }).finally();
+          this.mensagemControler.create({ message: 'Erro ao salvar a disciplina.', duration: 3000 }).finally();
           console.error(e);
         });
     }

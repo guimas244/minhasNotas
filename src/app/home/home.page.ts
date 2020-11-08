@@ -1,5 +1,7 @@
+import { DisciplinaService } from './../services/disciplina.service';
 import { Component } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +10,30 @@ import { NavController } from '@ionic/angular';
 })
 export class HomePage {
 
-  constructor(public navControlador: NavController) {}
+  disciplinas: Observable<any>;
 
-  novaDisciplina(){
+  constructor(public navControlador: NavController, private service: DisciplinaService, private mensagemControler: ToastController) {
+    this.disciplinas = this.service.getAll();
+  }
+
+  novaDisciplina() {
     this.navControlador.navigateRoot('disciplina');
+  }
+
+  editarDisciplina(disciplina: any) {
+    this.navControlador.navigateRoot('disciplina', disciplina);
+  }
+
+  removerDisciplina(key: string) {
+
+    this.service.remove(key)
+      .then(() => {
+        this.mensagemControler.create({ message: 'Disciplina removida com sucesso.', duration: 3000 }).finally();
+        this.navControlador.pop();
+      })
+      .catch((e) => {
+        this.mensagemControler.create({ message: 'Erro ao remover a disciplina.', duration: 3000 }).finally();
+        console.error(e);
+      });
   }
 }
