@@ -1,3 +1,4 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -10,7 +11,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -28,9 +28,10 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
       appId: "1:1019187403437:web:89b23d447e4349bae58424",
       measurementId: "G-PJDDGJN62H"
     }),
-    AngularFireDatabaseModule
-
-  ],
+    AngularFireDatabaseModule,
+    ReactiveFormsModule,
+    FormsModule
+    ],
   providers: [
     StatusBar,
     SplashScreen,
