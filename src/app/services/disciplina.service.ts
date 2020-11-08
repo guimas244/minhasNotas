@@ -24,6 +24,7 @@ export class DisciplinaService {
   }
 
   save(disciplina: any) {
+    console.log('salvando este dado ', disciplina);
     return new Promise((resolve, reject) => {
       if (disciplina.key) {
         this.db.list(this.PATH)
@@ -38,7 +39,7 @@ export class DisciplinaService {
     })
   }
 
-  remove(key: string){
+  remove(key: string) {
     return this.db.list(this.PATH).remove(key);
   }
 }

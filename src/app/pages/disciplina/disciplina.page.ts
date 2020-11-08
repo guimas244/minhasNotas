@@ -15,10 +15,10 @@ export class DisciplinaPage {
   disciplina: any;
 
 
-  private service: DisciplinaService;
+  
 
   constructor(private fb: FormBuilder, public navControlador: NavController, private mensagemControler: ToastController,
-    public navParams: NavParams) {
+    public navParams: NavParams, private service: DisciplinaService) {
     this.disciplina = this.navParams.data.disciplina || {};
     this.setupPage();
   }
@@ -36,8 +36,18 @@ export class DisciplinaPage {
       observacao: [this.disciplina.observacao, Validators.required],
     });
   }
-
-  onSubmit(){
-    console.log(this.formulario);
+  onSubmit() {
+    console.log('form ', this.formulario);
+    if (this.formulario.valid) {
+      this.service.save(this.formulario.value)
+        .then(() => {
+          this.mensagemControler.create({ message: 'Contato salvo com sucesso.', duration: 3000 }).finally();
+          this.navControlador.pop();
+        })
+        .catch((e) => {
+          this.mensagemControler.create({ message: 'Erro ao salvar o contato.', duration: 3000 }).finally();
+          console.error(e);
+        });
+    }
   }
 }
