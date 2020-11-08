@@ -1,20 +1,32 @@
+import { DisciplinaService } from './../../services/disciplina.service';
+import { NavController, NavParams, ToastController } from '@ionic/angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-disciplina',
   templateUrl: './disciplina.page.html',
-  styleUrls: ['./disciplina.page.scss'],
+  styleUrls: ['./disciplina.page.scss']
+
 })
-export class DisciplinaPage implements OnInit {
+export class DisciplinaPage {
   title: string;
   form: FormGroup;
   disciplina: any;
-  constructor(private fb: FormBuilder) { }
 
-  ngOnInit() {
-    console.log(this.fb)
+
+  private service: DisciplinaService;
+
+  constructor(private fb: FormBuilder, public navControlador: NavController, private mensagemControler: ToastController,
+    public navParams: NavParams) {
+    this.disciplina = this.navParams.data.disciplina || {};
+    this.setupPage();
   }
+
+  private setupPage() {
+    this.title = this.navParams.data.disciplina ? 'Alterando Disciplina' : 'Nova disciplina';
+  }
+
   createForm() {
     this.form = this.fb.group({
       key: [this.disciplina.key],
