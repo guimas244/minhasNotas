@@ -6,4 +6,43 @@
 
 <ion-content>
 
-</ion-content>
+  <ion-content padding>
+    <form [formGroup]="formulario">
+      <ion-item>
+        <ion-label stacked>Nome</ion-label>
+        <ion-input type="text" formControlnome="nome"></ion-input>
+      </ion-item>
+      <ion-item
+        *ngIf="!formulario.controls.nome.valid && (formulario.controls.nome.dirty || formulario.controls.nome.touched)"
+        color="danger">
+        <div [hidden]="!formulario.controls.nome.errors.required">
+          O campo é obrigatório
+        </div>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Ano</ion-label>
+        <ion-input type="number" formControlnome="ano"></ion-input>
+      </ion-item>
+      <ion-item
+        *ngIf="!formulario.controls.ano.valid && (formulario.controls.ano.dirty || formulario.controls.ano.touched)"
+        color="danger">
+        <div [hidden]="!formulario.controls.ano.errors.required">
+          O campo é obrigatório
+        </div>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Observações</ion-label>
+        <ion-input type="text" formControlnome="observacao"></ion-input>
+      </ion-item>
+      <ion-item
+        *ngIf="!formulario.controls.observacao.valid && (formulario.controls.observacao.dirty || formulario.controls.observacao.touched)"
+        color="danger">
+        <div [hidden]="!formulario.controls.observacao.errors.required">
+        </div>
+      </ion-item>
+
+      <ion-button type="submit" (click)="onSubmit()">Salvar</ion-button>
+    </form> 
+  </ion-content>

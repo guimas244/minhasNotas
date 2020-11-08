@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DisciplinaPage {
   title: string;
-  form: FormGroup;
+  formulario: FormGroup;
   disciplina: any;
 
 
@@ -25,14 +25,19 @@ export class DisciplinaPage {
 
   private setupPage() {
     this.title = this.navParams.data.disciplina ? 'Alterando Disciplina' : 'Nova disciplina';
+    this.createForm();
   }
 
   createForm() {
-    this.form = this.fb.group({
+    this.formulario = this.fb.group({
       key: [this.disciplina.key],
       nome: [this.disciplina.nome, Validators.required],
       ano: [this.disciplina.ano, Validators.required],
       observacao: [this.disciplina.observacao, Validators.required],
     });
+  }
+
+  onSubmit(){
+    console.log(this.formulario);
   }
 }
