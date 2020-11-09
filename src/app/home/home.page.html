@@ -11,20 +11,32 @@
 <ion-content padding>
 
   <ion-list>
-    <ion-item-sliding *ngFor="let contact of disciplinas | async">
-      <ion-item>
-        <h1>{{ contact.nome }}</h1>
-        <p>{{ contact.ano }}</p>
-      </ion-item>
+    <ion-item-sliding *ngFor="let disciplina of disciplinas | async">
+      <ion-card>
+        <ion-row>
 
-      <ion-item-options side="start">
-        <button ion-button color="secondary">
-          <ion-icon  name="create"></ion-icon>
-        </button>
-        <button ion-button color="danger">
-          <ion-icon  name="trash"></ion-icon>
-        </button>
-      </ion-item-options>
+          <ion-item class="ion-activated">
+            <ion-col size="12" size-md>
+
+              <strong>Nome: </strong>
+              <ion-label>{{disciplina.nome }}</ion-label>
+
+              <strong>Ano: </strong>
+              <ion-label> {{ disciplina.ano }}</ion-label>
+            </ion-col>
+            
+          </ion-item>
+
+          <ion-item-options side="start">
+            <button ion-button color="secondary" (click)="editarDisciplina(disciplina)">
+              <ion-icon name="create"></ion-icon>
+            </button>
+            <button ion-button color="danger" (click)="removerDisciplina(disciplina.key)">
+              <ion-icon name="trash"></ion-icon>
+            </button>
+          </ion-item-options>
+        </ion-row>
+      </ion-card>
     </ion-item-sliding>
   </ion-list>
 

@@ -29,6 +29,7 @@ export class DisciplinaPage {
   }
 
   createForm() {
+    console.log('disciplina ', this.disciplina)
     this.formulario = this.fb.group({
       key: [this.disciplina.key],
       nome: [this.disciplina.nome, Validators.required],

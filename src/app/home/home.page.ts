@@ -21,7 +21,8 @@ export class HomePage {
   }
 
   editarDisciplina(disciplina: any) {
-    this.navControlador.navigateRoot('disciplina', disciplina);
+    console.log('disciplina para editar', disciplina);
+    this.navControlador.navigateForward('disciplina', disciplina);
   }
 
   removerDisciplina(key: string) {
