@@ -1,3 +1,4 @@
+import { Router, NavigationExtras } from '@angular/router';
 import { DisciplinaService } from './../services/disciplina.service';
 import { Component } from '@angular/core';
 import { NavController, ToastController } from '@ionic/angular';
@@ -12,7 +13,8 @@ export class HomePage {
 
   disciplinas: Observable<any>;
 
-  constructor(public navControlador: NavController, private service: DisciplinaService, private mensagemControler: ToastController) {
+  constructor(public navControlador: NavController, public router: Router,
+    private service: DisciplinaService, private mensagemControler: ToastController, private rt: Router) {
     this.disciplinas = this.service.getAll();
   }
 
@@ -22,7 +24,9 @@ export class HomePage {
 
   editarDisciplina(disciplina: any) {
     console.log('disciplina para editar', disciplina);
-    this.navControlador.navigateForward('disciplina', disciplina);
+    const teste: NavigationExtras = { queryParams: { special: JSON.stringify(disciplina) } };
+    this.router.navigate(['disciplina'], teste);
+    // this.navControlador.
   }
 
   removerDisciplina(key: string) {

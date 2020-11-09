@@ -2,6 +2,7 @@ import { DisciplinaService } from './../../services/disciplina.service';
 import { NavController, NavParams, ToastController } from '@ionic/angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-disciplina',
@@ -14,12 +15,19 @@ export class DisciplinaPage {
   formulario: FormGroup;
   disciplina: any;
 
-
-  
-
   constructor(private fb: FormBuilder, public navControlador: NavController, private mensagemControler: ToastController,
-    public navParams: NavParams, private service: DisciplinaService) {
-    this.disciplina = this.navParams.data.disciplina || {};
+    public navParams: NavParams, private service: DisciplinaService, public router: ActivatedRoute) {
+    console.log('this.navParams.data ', this.navParams.data);
+    this.disciplina = {};
+    this.router.queryParams.subscribe(
+      params => {
+        if (params && params.special) {
+          console.log('special ', JSON.parse(params.special));
+          this.disciplina = JSON.parse(params.special);
+          console.log('disciplina com o special ', this.disciplina);
+        }
+      }
+    );
     this.setupPage();
   }
 
@@ -29,7 +37,7 @@ export class DisciplinaPage {
   }
 
   createForm() {
-    console.log('disciplina ', this.disciplina)
+    console.log('disciplina ', this.disciplina);
     this.formulario = this.fb.group({
       key: [this.disciplina.key],
       nome: [this.disciplina.nome, Validators.required],
