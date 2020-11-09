@@ -1,3 +1,4 @@
+import { async } from '@angular/core/testing';
 import { DisciplinaService } from './../../services/disciplina.service';
 import { NavController, NavParams, ToastController } from '@ionic/angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -14,25 +15,31 @@ export class DisciplinaPage {
   title: string;
   formulario: FormGroup;
   disciplina: any;
+  testando: any;
 
   constructor(private fb: FormBuilder, public navControlador: NavController, private mensagemControler: ToastController,
     public navParams: NavParams, private service: DisciplinaService, public router: ActivatedRoute) {
     console.log('this.navParams.data ', this.navParams.data);
     this.disciplina = {};
+    
     this.router.queryParams.subscribe(
       params => {
-        if (params && params.special) {
-          console.log('special ', JSON.parse(params.special));
-          this.disciplina = JSON.parse(params.special);
+        if (params && params.disciplina) {
+          console.log('special ', JSON.parse(params.disciplina));
+          this.disciplina = JSON.parse(params.disciplina);
           console.log('disciplina com o special ', this.disciplina);
+        }else{
+          console.log('to no else');
+          this.disciplina = {};
         }
+        this.setupPage();
       }
     );
-    this.setupPage();
+    
   }
 
   private setupPage() {
-    this.title = this.navParams.data.disciplina ? 'Alterando Disciplina' : 'Nova disciplina';
+    this.title = this.disciplina.key ? 'Alterando Disciplina' : 'Nova disciplina';
     this.createForm();
   }
 

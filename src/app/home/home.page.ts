@@ -24,7 +24,7 @@ export class HomePage {
 
   editarDisciplina(disciplina: any) {
     console.log('disciplina para editar', disciplina);
-    const teste: NavigationExtras = { queryParams: { special: JSON.stringify(disciplina) } };
+    const teste: NavigationExtras = { queryParams: { disciplina: JSON.stringify(disciplina) } };
     this.router.navigate(['disciplina'], teste);
     // this.navControlador.
   }
