@@ -8,13 +8,14 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
     path: 'disciplina',
     loadChildren: () => import('./pages/disciplina/disciplina.module').then( m => m.DisciplinaPageModule)
-  },  {
+  },
+  {
     path: 'list-disciplina',
     loadChildren: () => import('./pages/list-disciplina/list-disciplina.module').then( m => m.ListDisciplinaPageModule)
   },
@@ -25,6 +26,14 @@ const routes: Routes = [
   {
     path: 'nota',
     loadChildren: () => import('./pages/nota/nota.module').then( m => m.NotaPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'registro',
+    loadChildren: () => import('./pages/registro/registro.module').then( m => m.RegistroPageModule)
   },
 
 ];

@@ -31,6 +31,9 @@
             <ion-button (click)="editarDisciplina(disciplina)">
               <ion-icon name="create"></ion-icon>
             </ion-button>
+
+          </ion-item-options>
+          <ion-item-options>
             <ion-button color="danger" (click)="removerDisciplina(disciplina.key)">
               <ion-icon name="trash"></ion-icon>
             </ion-button>
@@ -39,13 +42,13 @@
       </ion-card>
     </ion-item-sliding>
   </ion-list>
-  <ion-button (click)="pesquisar()" expand="block" fill="solid" >
+  <ion-button (click)="pesquisar()" expand="block" fill="solid">
     Consultar Disciplinas
   </ion-button>
-  <ion-button (click)="editarDisciplina()" expand="block" fill="solid" >
+  <ion-button (click)="editarDisciplina()" expand="block" fill="solid">
     Cadastrar Disciplina
   </ion-button>
-  <ion-button (click)="retornarMenu()" expand="block" color="medium" fill="solid" >
+  <ion-button (click)="retornarMenu()" expand="block" color="medium" fill="solid">
     Retornar Menu
   </ion-button>
 </ion-content>
