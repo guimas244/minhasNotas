@@ -16,9 +16,9 @@ export class ListNotaPage {
   constructor(public navControlador: NavController, public router: Router,
     private service: NotaService, private mensagemControler: ToastController) { }
 
-  editarNota(disciplina: any) {
+  editarNota(nota: any) {
     const param: NavigationExtras = { queryParams: { nota: JSON.stringify(nota) } };
-    this.router.navigate(['disciplina'], param);
+    this.router.navigate(['nota'], param);
   }
 
 

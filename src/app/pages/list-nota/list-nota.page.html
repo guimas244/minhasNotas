@@ -13,8 +13,8 @@
           <ion-item class="ion-activated">
             <ion-col size="12" size-md>
 
-              <strong>disciplina: </strong>
-              <ion-label>{{nota.disciplina }}</ion-label>
+              <strong>disciplina: </strong> {{ nota.disciplina_nome }}
+
 
               <strong>valor: </strong> {{ nota.valor }}
 
@@ -26,10 +26,10 @@
           </ion-item>
 
           <ion-item-options side="start">
-            <ion-button (click)="editarDisciplina(disciplina)">
+            <ion-button (click)="editarNota(nota)">
               <ion-icon name="create"></ion-icon>
             </ion-button>
-            <ion-button color="danger" (click)="removerDisciplina(disciplina.key)">
+            <ion-button color="danger" (click)="removerDisciplina(nota.key)">
               <ion-icon name="trash"></ion-icon>
             </ion-button>
           </ion-item-options>
