@@ -8,38 +8,39 @@
 
   <ion-list>
     <ion-item-sliding *ngFor="let disciplina of disciplinas | async">
-      <ion-card>
-        <ion-row>
 
-          <ion-item class="ion-activated">
-            <ion-col size="12" size-md>
 
-              <strong>Nome: </strong>
-              <ion-label>{{disciplina.nome }}</ion-label>
+      <ion-item class="no-padding">
 
-              <strong>Ano: </strong>
-              <ion-label> {{ disciplina.ano }}</ion-label>
 
-              <strong *ngIf="disciplina.observacao">Observações: </strong>
-              <ion-label *ngIf="disciplina.observacao"> {{ disciplina.observacao }}</ion-label>
+        <ion-label>
+          <h2>Nome:</h2>
+          <p>{{ disciplina.nome }}</p>
+          <h2>Ano:</h2>
+          <p>{{ disciplina.ano }}</p>
+        </ion-label>
+        <ion-label>
+          <h2>Observações:</h2>
+          <p>{{ disciplina.observacao }}</p>
+        </ion-label>
 
-            </ion-col>
 
-          </ion-item>
 
-          <ion-item-options side="start">
-            <ion-button (click)="editarDisciplina(disciplina)">
-              <ion-icon name="create"></ion-icon>
-            </ion-button>
 
-          </ion-item-options>
-          <ion-item-options>
-            <ion-button color="danger" (click)="removerDisciplina(disciplina.key)">
-              <ion-icon name="trash"></ion-icon>
-            </ion-button>
-          </ion-item-options>
-        </ion-row>
-      </ion-card>
+      </ion-item>
+
+      <ion-item-options side="start">
+        <ion-button (click)="editarDisciplina(disciplina)">
+          <ion-icon name="create"></ion-icon>
+        </ion-button>
+
+      </ion-item-options>
+      <ion-item-options>
+        <ion-button color="danger" (click)="removerDisciplina(disciplina.key)">
+          <ion-icon name="trash"></ion-icon>
+        </ion-button>
+      </ion-item-options>
+
     </ion-item-sliding>
   </ion-list>
   <ion-button (click)="pesquisar()" expand="block" fill="solid">

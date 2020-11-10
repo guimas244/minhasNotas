@@ -57,7 +57,7 @@ export class NotaPage {
     console.log('this.formNota',this.formNota)
   }
   retornarMenu(){
-    this.navControlador.navigateRoot('list-disciplina');
+    this.navControlador.navigateRoot('list-nota');
   }
 
   // compareWith = this.compareWithFn;
