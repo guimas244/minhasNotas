@@ -18,4 +18,9 @@ export class HomePage {
     this.navControlador.navigateRoot('list-nota');
   }
 
+  deslogar(){
+    this.navControlador.navigateRoot('login');
+
+  }
+
 }
