@@ -16,7 +16,7 @@ export class NotaPage {
   formNota: FormGroup;
   nota: any;
   disciplinas: Observable<any>;
-  constructor(private fb: FormBuilder,public navControlador: NavController, private serviceDisciplina: DisciplinaService, private service: NotaService,public router: ActivatedRoute) {
+  constructor(private fb: FormBuilder, public navControlador: NavController, private serviceDisciplina: DisciplinaService, private service: NotaService, public router: ActivatedRoute) {
     this.nota = {};
     this.router.queryParams.subscribe(
       params => {
@@ -24,14 +24,14 @@ export class NotaPage {
           console.log('special ', JSON.parse(params.nota));
           this.nota = JSON.parse(params.nota);
           console.log('disciplina com o special ', this.nota);
-        }else{
+        } else {
           console.log('to no else');
           this.nota = {};
         }
         this.setupPage();
       }
     );
-   }
+  }
 
   private setupPage() {
     this.title = this.nota.key ? 'Alterando Nota' : 'Nova Nota';
@@ -39,12 +39,12 @@ export class NotaPage {
     this.createForm();
   }
 
-  getListaDisciplinas(){
+  getListaDisciplinas() {
     this.disciplinas = this.serviceDisciplina.getAll();
     console.log('this.disciplinas ', this.disciplinas)
   }
   createForm() {
-    console.log('this.fb',this.fb)
+    console.log('this.fb', this.fb)
     this.formNota = this.fb.group({
       key: [this.nota.key],
       valor: [this.nota.valor, Validators.required],
@@ -54,14 +54,13 @@ export class NotaPage {
       disciplina_key: [this.nota.disciplina_key]
 
     });
-    console.log('this.formNota',this.formNota)
   }
-  retornarMenu(){
+  retornarMenu() {
     this.navControlador.navigateRoot('list-nota');
   }
 
   // compareWith = this.compareWithFn;
-  selecionaValor(key:any){
+  selecionaValor(key: any) {
     this.formNota.value.disciplina_key = key.detail.value.key;
     this.formNota.value.disciplina_nome = key.detail.value.nome;
 
@@ -72,7 +71,6 @@ export class NotaPage {
     console.log('form ', this.formNota);
 
     if (this.formNota.valid && this.formNota.value.disciplina_nome) {
-      console.log('')
       this.service.save(this.formNota.value)
         .then(() => {
           // this.mensagemControler.create({ message: 'Disciplina salvo com sucesso.', duration: 3000 }).finally();
