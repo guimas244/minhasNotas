@@ -7,16 +7,15 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
-
-
   constructor(public navControlador: NavController) {
-   
   }
 
-  navDisciplina(){
+  navDisciplina() {
     this.navControlador.navigateRoot('list-disciplina');
+  }
 
+  navNotas() {
+    this.navControlador.navigateRoot('list-nota');
   }
 
 }

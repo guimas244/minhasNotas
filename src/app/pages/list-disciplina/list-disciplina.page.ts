@@ -8,29 +8,20 @@ import { DisciplinaService } from 'src/app/services/disciplina.service';
   templateUrl: './list-disciplina.page.html',
   styleUrls: ['./list-disciplina.page.scss'],
 })
-export class ListDisciplinaPage  {
+export class ListDisciplinaPage {
   disciplinas: Observable<any>;
   title: string = "Disciplinas"
 
-  constructor(public navControlador: NavController, public router: Router,
-    private service: DisciplinaService, private mensagemControler: ToastController, private rt: Router) { 
-
-    
-
+  constructor(public navControlador: NavController, public router: Router, private service: DisciplinaService, private mensagemControler: ToastController) {
   }
 
-  
-  novaDisciplina() {
-    this.navControlador.navigateRoot('disciplina');
-  }
-  pesquisar(){
+  pesquisar() {
+    console.log('log')
     this.disciplinas = this.service.getAll();
   }
   editarDisciplina(disciplina: any) {
-    console.log('disciplina para editar', disciplina);
-    const teste: NavigationExtras = { queryParams: { disciplina: JSON.stringify(disciplina) } };
-    this.router.navigate(['disciplina'], teste);
-    // this.navControlador.
+    const param: NavigationExtras = { queryParams: { disciplina: JSON.stringify(disciplina) } };
+    this.router.navigate(['disciplina'], param);
   }
 
   removerDisciplina(key: string) {
@@ -45,7 +36,7 @@ export class ListDisciplinaPage  {
         console.error(e);
       });
   }
-  retornarMenu(){
+  retornarMenu() {
     this.navControlador.navigateRoot('home');
   }
 

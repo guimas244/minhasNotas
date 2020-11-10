@@ -18,6 +18,14 @@ const routes: Routes = [
     path: 'list-disciplina',
     loadChildren: () => import('./pages/list-disciplina/list-disciplina.module').then( m => m.ListDisciplinaPageModule)
   },
+  {
+    path: 'list-nota',
+    loadChildren: () => import('./pages/list-nota/list-nota.module').then( m => m.ListNotaPageModule)
+  },
+  {
+    path: 'nota',
+    loadChildren: () => import('./pages/nota/nota.module').then( m => m.NotaPageModule)
+  },
 
 ];
 

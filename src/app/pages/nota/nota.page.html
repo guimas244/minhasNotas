@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>nota</ion-title>
+  </ion-toolbar>
+</ion-header>
+<form [formGroup]="formNota" (ngSubmit)="onSubmit()">
+  <ion-item>
+    <ion-label position="floating">Nota <ion-text color="danger">*</ion-text>
+    </ion-label>
+    <ion-input required formControlName="valor" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Professor <ion-text color="danger">*</ion-text>
+    </ion-label>
+    <ion-input required formControlName="professor" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Observações </ion-label>
+    <ion-input required formControlName="observacao" type="text"></ion-input>
+  </ion-item>
+
+
+  <ion-button block expand="block" color="primary" type="submit" [disabled]="formNota.invalid">
+    Salvar
+  </ion-button>
+  <ion-button  (click)="retornarMenu()" expand="block" color="medium"  >
+    Retornar ao Menu de Disciplinas
+  </ion-button>
+</form>
+<ion-content>
+
+</ion-content>
