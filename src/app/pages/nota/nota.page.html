@@ -25,8 +25,8 @@
     <ion-select placeholder="Selecione uma">
 
 
-      <ion-select [disciplinasSel]="disciplinasSel">
-        <ion-select-option *ngFor="let disciplina of disciplinas | async">{{disciplina.nome}}</ion-select-option>
+      <ion-select  (ionChange)="teste($event);" >
+        <ion-select-option  *ngFor="let disciplinasSel of disciplinas | async">{{disciplinasSel.nome}}</ion-select-option>
       </ion-select>
 
 

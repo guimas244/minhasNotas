@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { Observable } from 'rxjs';
@@ -14,6 +14,9 @@ export class NotaPage {
   nota: any;
   disciplinas: Observable<any>;
   disciplinasSel: any;
+  
+  valor: string;
+
   constructor(private fb: FormBuilder,public navControlador: NavController, private serviceDisciplina: DisciplinaService) {
     this.nota = {};
     console.log('estou construindo')
@@ -28,8 +31,6 @@ export class NotaPage {
   getListaDisciplinas(){
     this.disciplinas = this.serviceDisciplina.getAll();
     console.log('this.disciplinas ', this.disciplinas)
-
-
   }
   createForm() {
     console.log('this.fb',this.fb)
@@ -45,5 +46,15 @@ export class NotaPage {
   }
   retornarMenu(){
     this.navControlador.navigateRoot('list-disciplina');
+  }
+
+  // compareWith = this.compareWithFn;
+  teste(){
+    console.log('to aqui', this.disciplinasSel)
+  }
+
+  onSubmit() {
+    console.log('form ', this.formNota);
+    console.log('valor ', this.valor)
   }
 }
