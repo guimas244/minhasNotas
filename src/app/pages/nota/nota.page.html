@@ -16,14 +16,27 @@
   </ion-item>
   <ion-item>
     <ion-label position="floating">Observações </ion-label>
-    <ion-input required formControlName="observacao" type="text"></ion-input>
+    <ion-input formControlName="observacao" type="text"></ion-input>
   </ion-item>
 
+  <!-- SELETOR DA DISCIPLINA DA NOTA E TODA NOTA É DE UMA DISCIPLINA-->
+  <ion-item>
+    <ion-label>Disciplina</ion-label>
+    <ion-select placeholder="Selecione uma">
+
+
+      <ion-select [disciplinasSel]="disciplinasSel">
+        <ion-select-option *ngFor="let disciplina of disciplinas | async">{{disciplina.nome}}</ion-select-option>
+      </ion-select>
+
+
+    </ion-select>
+  </ion-item>
 
   <ion-button block expand="block" color="primary" type="submit" [disabled]="formNota.invalid">
     Salvar
   </ion-button>
-  <ion-button  (click)="retornarMenu()" expand="block" color="medium"  >
+  <ion-button (click)="retornarMenu()" expand="block" color="medium">
     Retornar ao Menu de Disciplinas
   </ion-button>
 </form>
