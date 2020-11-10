@@ -33,6 +33,7 @@ export class RegistroPage implements OnInit {
         await this.autenticador.auth.createUserWithEmailAndPassword(usuario.email, usuario.senha)
           .then(retorno => console.log(retorno));
         this.navControlador.navigateRoot('home');
+        (await carregando).dismiss();
       } catch (e) {
         this.mostrarMensagem(e);
       }
