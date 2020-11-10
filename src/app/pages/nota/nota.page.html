@@ -22,15 +22,17 @@
   <!-- SELETOR DA DISCIPLINA DA NOTA E TODA NOTA É DE UMA DISCIPLINA-->
   <ion-item>
     <ion-label>Disciplina</ion-label>
-    <ion-select placeholder="Selecione uma">
 
-
-      <ion-select  (ionChange)="teste($event);" >
-        <ion-select-option  *ngFor="let disciplinasSel of disciplinas | async">{{disciplinasSel.nome}}</ion-select-option>
-      </ion-select>
-
-
+    <!-- <ion-select placeholder="Selecione uma">
+      <ion-select-option *ngFor="let disciplinasSel of disciplinas | async">{{disciplinasSel.nome}}
+      </ion-select-option>
+    </ion-select> -->
+    <ion-select placeholder="Selecione uma" (ionChange)="selecionaValor($event)">
+      <ion-select-option *ngFor="let disciplina of disciplinas | async" [value]="disciplina">
+        {{disciplina.nome}}
+      </ion-select-option>
     </ion-select>
+
   </ion-item>
 
   <ion-button block expand="block" color="primary" type="submit" [disabled]="formNota.invalid">

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { DisciplinaService } from 'src/app/services/disciplina.service';
+import { NotaService } from 'src/app/services/nota.service';
 
 @Component({
   selector: 'app-nota',
@@ -13,11 +14,10 @@ export class NotaPage {
   formNota: FormGroup;
   nota: any;
   disciplinas: Observable<any>;
-  disciplinasSel: any;
   
-  valor: string;
+  disciplinaSelecionada: string;
 
-  constructor(private fb: FormBuilder,public navControlador: NavController, private serviceDisciplina: DisciplinaService) {
+  constructor(private fb: FormBuilder,public navControlador: NavController, private serviceDisciplina: DisciplinaService, private service: NotaService) {
     this.nota = {};
     console.log('estou construindo')
     this.setupPage();
@@ -39,7 +39,7 @@ export class NotaPage {
       valor: [this.nota.valor, Validators.required],
       professor: [this.nota.professor, Validators.required],
       observacao: [this.nota.observacao],
-      disciplina: [this.disciplinasSel]
+      disciplina: [this.disciplinaSelecionada]
 
     });
     console.log('this.formNota',this.formNota)
@@ -49,12 +49,28 @@ export class NotaPage {
   }
 
   // compareWith = this.compareWithFn;
-  teste(){
-    console.log('to aqui', this.disciplinasSel)
+  selecionaValor(key:any){
+    this.disciplinaSelecionada = key.detail.value.key;
+    console.log('to aqui', key.detail.value.nome)
   }
 
   onSubmit() {
+    console.log('valor ', this.disciplinaSelecionada)
     console.log('form ', this.formNota);
-    console.log('valor ', this.valor)
+
+    if (this.formNota.valid && this.disciplinaSelecionada) {
+      this.formNota.value.disciplina = this.disciplinaSelecionada;
+
+      this.service.save(this.formNota.value)
+        .then(() => {
+          // this.mensagemControler.create({ message: 'Disciplina salvo com sucesso.', duration: 3000 }).finally();
+          this.navControlador.pop();
+          this.createForm();
+        })
+        .catch((e) => {
+          // this.mensagemControler.create({ message: 'Erro ao salvar a disciplina.', duration: 3000 }).finally();
+          console.error(e);
+        });
+    }
   }
 }

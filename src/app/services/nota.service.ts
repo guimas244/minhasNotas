@@ -31,12 +31,19 @@ export class NotaService {
     return new Promise((resolve, reject) => {
       if (nota.key) {
         this.db.list(this.PATH)
-          .update(nota.key, { nome: nota.nome, ano: nota.ano, observacao: nota.observacao })
+          .update(nota.key, { 
+            valor: nota.valor,
+            professor: nota.professor, 
+             observacao: nota.observacao,
+             disciplina: nota.disciplina })
           .then(() => resolve())
           .catch((e) => reject(e));
       } else {
         this.db.list(this.PATH)
-          .push({ nome: nota.nome, ano: nota.ano, observacao: nota.observacao })
+          .push({ valor: nota.valor,
+            professor: nota.professor, 
+             observacao: nota.observacao,
+             disciplina: nota.disciplina })
           .then(() => resolve());
       }
     })
