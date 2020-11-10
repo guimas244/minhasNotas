@@ -35,7 +35,8 @@ export class NotaService {
             valor: nota.valor,
             professor: nota.professor, 
              observacao: nota.observacao,
-             disciplina: nota.disciplina })
+             disciplina_nome: nota.disciplina_nome,
+             disciplina_key: nota.disciplina_key })
           .then(() => resolve())
           .catch((e) => reject(e));
       } else {
@@ -43,7 +44,8 @@ export class NotaService {
           .push({ valor: nota.valor,
             professor: nota.professor, 
              observacao: nota.observacao,
-             disciplina: nota.disciplina })
+             disciplina_nome: nota.disciplina_nome,
+             disciplina_key: nota.disciplina_key })
           .then(() => resolve());
       }
     })

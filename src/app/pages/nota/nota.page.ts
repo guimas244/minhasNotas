@@ -39,7 +39,8 @@ export class NotaPage {
       valor: [this.nota.valor, Validators.required],
       professor: [this.nota.professor, Validators.required],
       observacao: [this.nota.observacao],
-      disciplina: [this.disciplinaSelecionada]
+      disciplina_nome: [this.nota.disciplina_nome],
+      disciplina_key: [this.nota.disciplina_key]
 
     });
     console.log('this.formNota',this.formNota)
@@ -50,17 +51,17 @@ export class NotaPage {
 
   // compareWith = this.compareWithFn;
   selecionaValor(key:any){
-    this.disciplinaSelecionada = key.detail.value.key;
+    this.formNota.value.disciplina_key = key.detail.value.key;
+    this.formNota.value.disciplina_nome = key.detail.value.nome;
+
     console.log('to aqui', key.detail.value.nome)
   }
 
   onSubmit() {
-    console.log('valor ', this.disciplinaSelecionada)
     console.log('form ', this.formNota);
 
-    if (this.formNota.valid && this.disciplinaSelecionada) {
-      this.formNota.value.disciplina = this.disciplinaSelecionada;
-
+    if (this.formNota.valid && this.formNota.value.disciplina_nome) {
+      console.log('')
       this.service.save(this.formNota.value)
         .then(() => {
           // this.mensagemControler.create({ message: 'Disciplina salvo com sucesso.', duration: 3000 }).finally();
