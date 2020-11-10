@@ -34,4 +34,18 @@ export class ListNotaPage {
   pesquisar() {
     this.notas = this.service.getAll();
   }
+
+  
+  removerNota(key: string) {
+
+    this.service.remove(key)
+      .then(() => {
+        this.mensagemControler.create({ message: 'Nota removida com sucesso.', duration: 3000 }).finally();
+        this.navControlador.pop();
+      })
+      .catch((e) => {
+        this.mensagemControler.create({ message: 'Erro ao remover a Nota.', duration: 3000 }).finally();
+        console.error(e);
+      });
+  }
 }
