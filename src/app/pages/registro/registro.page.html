@@ -7,15 +7,15 @@
 <ion-content>
   <ion-item>
   <ion-label position="floating">E-mail</ion-label>
-  <ion-input type="email" required></ion-input>
+  <ion-input type="email" [(ngModel)]="usuario.email" required></ion-input>
 </ion-item>
 
 <ion-item>
   <ion-label position="floating">Password</ion-label>
-  <ion-input type="password" required></ion-input>
+  <ion-input type="password" [(ngModel)]="usuario.senha" required></ion-input>
 </ion-item>
 
-<ion-button type="submit"  expand="block" fill="solid" >
+<ion-button type="submit" (click)="registrar(usuario)" expand="block" fill="solid" >
   Login
 </ion-button>
 <ion-button (click)="retornarLogin()" color="light"  expand="block" fill="solid" >

@@ -18,7 +18,7 @@ export class ListDisciplinaPage {
   pesquisar() {
     console.log('log')
     this.disciplinas = this.service.getAll();
-    console.log('estou com isso aqui ',this.disciplinas)
+    console.log('estou com isso aqui ', this.disciplinas)
   }
   editarDisciplina(disciplina: any) {
     const param: NavigationExtras = { queryParams: { disciplina: JSON.stringify(disciplina) } };

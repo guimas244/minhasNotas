@@ -12,6 +12,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { DisciplinaService } from './services/disciplina.service';
+// import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -29,6 +32,7 @@ import { DisciplinaService } from './services/disciplina.service';
       appId: "1:1019187403437:web:89b23d447e4349bae58424",
       measurementId: "G-PJDDGJN62H"
     }),
+    AngularFireAuthModule,
     AngularFireDatabaseModule,
     ReactiveFormsModule,
     FormsModule
