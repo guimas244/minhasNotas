@@ -67,4 +67,9 @@ export class DisciplinaPage {
         });
     }
   }
+
+  retornarMenu(){
+    this.navControlador.navigateRoot('list-disciplina');
+  }
+
 }

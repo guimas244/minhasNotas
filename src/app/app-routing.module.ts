@@ -14,7 +14,11 @@ const routes: Routes = [
   {
     path: 'disciplina',
     loadChildren: () => import('./pages/disciplina/disciplina.module').then( m => m.DisciplinaPageModule)
+  },  {
+    path: 'list-disciplina',
+    loadChildren: () => import('./pages/list-disciplina/list-disciplina.module').then( m => m.ListDisciplinaPageModule)
   },
+
 ];
 
 @NgModule({

@@ -43,6 +43,11 @@
         </div>
       </ion-item>
 
-      <ion-button type="submit" (click)="onSubmit()">Salvar</ion-button>
-    </form> 
+      <ion-button type="submit" (click)="onSubmit()" expand="block" fill="solid" shape="round">
+        Salvar
+      </ion-button>
+      <ion-button (click)="retornarMenu()" expand="block" color="medium" fill="solid" shape="round">
+        Retornar ao Menu de Disciplinas
+      </ion-button>
+    </form>
   </ion-content>
